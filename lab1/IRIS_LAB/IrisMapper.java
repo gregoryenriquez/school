@@ -11,21 +11,30 @@ public class IrisMapper  extends Mapper <LongWritable,Text,Text,Text> {
    public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
       
       // TODO create array of string tokens from record assuming space-separated fields using split() method of String class
+  String[] recordTokens = value.toString().split(" ");
+  String sepalLength, sepalWidth, petalLength, petalWidth, species;
 
-	String[]       
-      // TODO pull out sepal length from columns var
-
-      //  TODO pull out sepal width from columns var
-
-      // TODO pull out petal length from columns var
-
-      // TODO pull out petal width from columns var
-
-
-      // TODO pull out flower id from columns var
-
+  // TODO pull out sepal length from columns var
+  sepalLength = recordTokens[0];
+  //  TODO pull out sepal width from columns var
+  sepalWidth = recordTokens[1];
+  // TODO pull out petal length from columns var
+  petalLength = recordTokens[2];
+  // TODO pull out petal width from columns var
+  petalWidth = recordTokens[3];
+  // TODO pull out flower id from columns var
+  species = recordTokens[4];
+  
       // TODO write output to context as key-value pair where key is 
       // flowerId and value is underscore-separated concatenation of 
       // sepal/petal length/widths
+
+  context.write(new Text(key.toString()), 
+                new Text(sepalLength + "_" +
+                          sepalWidth + "_" +
+                          petalLength + "_" +
+                          petalWidth + "_" +
+                          species
+                ));   
    }
 }

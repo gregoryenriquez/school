@@ -30,7 +30,7 @@ public class IrisDriver extends Configured implements Tool {
       job.setMapperClass(IrisMapper.class);
 
       // TODO comment out the Reducer class definition
-      //? job.setReducerClass(IrisReducer.class);
+      job.setReducerClass(IrisReducer.class);
 
       job.setInputFormatClass(TextInputFormat.class);
       job.setOutputKeyClass(Text.class);
