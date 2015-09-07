@@ -20,6 +20,16 @@ public class IrisReducer  extends Reducer <Text,Text,Text,Text> {
     
        int count = 0;
 
+	meanSepalWidth = 0.0f;
+	meanSepalLength = 0.0f;
+	meanPetalWidth = 0.0f;
+	meanPetalLength = 0.0f;
+
+	totalSepalWidth = 0.0f;
+	totalSepalLength = 0.0f;
+	totalPetalWidth = 0.0f;
+	totalPetalLength = 0.0f;
+
       for(Text value: values) {
          // use String split() method to split value and assign to tempString
         tempString = value.toString().split("_");
@@ -96,7 +106,6 @@ public class IrisReducer  extends Reducer <Text,Text,Text,Text> {
                                                               minPetalWidth, maxPetalWidth, meanPetalWidth,
                                                               minPetalLength, maxPetalLength, meanPetalLength);
 
-      System.out.println(output);
       // TODO emit output to context
       context.write(key, new Text(output));
 
